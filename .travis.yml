@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -f Dockerfile.dev -t build_for_test .
+
+script:
+  -  docker run build_for_test npm run test -- --coverage
